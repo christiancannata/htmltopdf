@@ -9,6 +9,7 @@
 // src/Controller/LuckyController.php
 namespace App\Controller;
 
+use Knp\Bundle\SnappyBundle\Snappy\Response\PdfResponse;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
@@ -23,17 +24,20 @@ class DefaultController extends Controller
         $client = new \GuzzleHttp\Client();
         $res = $client->get('https://jsonplaceholder.typicode.com/posts');
 
-        $this->get('knp_snappy.pdf')->generateFromHtml(
-            $this->renderView(
-                'test.html.twig',
-                [
-                    'page_title' => "sadsad",
-                    'posts' => json_decode($res->getBody()->getContents(), true)
-                ]
+
+
+        return new PdfResponse(
+            $this->get('knp_snappy.pdf')->getOutputFromHtml(
+                $this->renderView(
+                    'test.html.twig',
+                    [
+                        'page_title' => "sadsad",
+                        'posts' => json_decode($res->getBody()->getContents(), true)
+                    ]
+                )
             ),
-            "/var/tmp/example_" . time() . ".pdf"
+            "example_" . time() . ".pdf"
         );
 
-        return new JsonResponse(["response" => "ok"]);
     }
 }
