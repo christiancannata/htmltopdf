@@ -10,6 +10,7 @@
 namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -18,7 +19,16 @@ class DefaultController extends Controller
 
     public function index()
     {
+        $this->get('knp_snappy.pdf')->generateFromHtml(
+            $this->renderView(
+                'test.html.twig',
+                [
+                    'page_title' => "sadsad"
+                ]
+            ),
+            "/var/tmp/example_".time().".pdf"
+        );
 
-        return $this->render('test.html.twig', array('page_title' => "sadsad"));
+        return new JsonResponse(["response"=>"ok"]);
     }
 }
