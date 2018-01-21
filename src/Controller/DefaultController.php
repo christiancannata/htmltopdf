@@ -19,16 +19,21 @@ class DefaultController extends Controller
 
     public function index()
     {
+
+        $client = new \GuzzleHttp\Client();
+        $res = $client->get('https://jsonplaceholder.typicode.com/posts');
+
         $this->get('knp_snappy.pdf')->generateFromHtml(
             $this->renderView(
                 'test.html.twig',
                 [
-                    'page_title' => "sadsad"
+                    'page_title' => "sadsad",
+                    'posts' => json_decode($res->getBody()->getContents(), true)
                 ]
             ),
-            "/var/tmp/example_".time().".pdf"
+            "/var/tmp/example_" . time() . ".pdf"
         );
 
-        return new JsonResponse(["response"=>"ok"]);
+        return new JsonResponse(["response" => "ok"]);
     }
 }
