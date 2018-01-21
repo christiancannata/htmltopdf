@@ -27,7 +27,10 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/polyfill-mbstring" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/process" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/routing" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/twig-bridge" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/twig-bundle" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/yaml" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/twig/twig" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
@@ -57,7 +60,10 @@
           <root url="file://$MODULE_DIR$/vendor/symfony/polyfill-mbstring" />
           <root url="file://$MODULE_DIR$/vendor/symfony/process" />
           <root url="file://$MODULE_DIR$/vendor/symfony/routing" />
+          <root url="file://$MODULE_DIR$/vendor/symfony/twig-bridge" />
+          <root url="file://$MODULE_DIR$/vendor/symfony/twig-bundle" />
           <root url="file://$MODULE_DIR$/vendor/symfony/yaml" />
+          <root url="file://$MODULE_DIR$/vendor/twig/twig" />
         </CLASSES>
         <SOURCES>
           <root url="file://$MODULE_DIR$/vendor/composer" />
@@ -83,7 +89,10 @@
           <root url="file://$MODULE_DIR$/vendor/symfony/polyfill-mbstring" />
           <root url="file://$MODULE_DIR$/vendor/symfony/process" />
           <root url="file://$MODULE_DIR$/vendor/symfony/routing" />
+          <root url="file://$MODULE_DIR$/vendor/symfony/twig-bridge" />
+          <root url="file://$MODULE_DIR$/vendor/symfony/twig-bundle" />
           <root url="file://$MODULE_DIR$/vendor/symfony/yaml" />
+          <root url="file://$MODULE_DIR$/vendor/twig/twig" />
         </SOURCES>
       </library>
     </orderEntry>
