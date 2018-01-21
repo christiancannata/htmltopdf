@@ -1,28 +1,359 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Welcome to Symfony!</title>
-    <!-- Latest compiled and minified CSS -->
-   <!-- <link rel="stylesheet" href="/css/bootstrap.min.css">-->
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+    <style>
+        .green-text {
+            color: #4CAF50 !important;
+        }
+        .yellow-text {
+            color: #fcc559 !important;
+        }
+        .red-text {
+            color: #F04D52 !important;
+        }
+        .cyan-text {
+            color: #20BAD1 !important;
+        }
+
+        html, body {
+            margin: 0;
+            padding: 0;
+            position: relative;
+            height: 100%;
+        }
+
+        .content {
+            padding-left: 20px;
+            padding-right: 20px;
+            margin: auto;
+        }
+
+        header {
+            position: relative;
+            height: 150px;
+            background-color: #F04D52;
+        }
+
+        header #company-logo {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            max-height: 35px;
+        }
+
+        header #header-logo {
+            height: 210px;
+            width: 100px;
+            padding-left: 20px;
+            padding-right: 15px;
+            vertical-align: bottom;
+            background-color: #110329;
+            position: relative;
+            margin-left: 20px;
+            margin-right: 15px;
+        }
+
+        header #header-logo img {
+            position: absolute;
+            bottom: 13px;
+        }
+
+        header #title {
+            color: #333;
+            margin-top: 30px;
+            font-weight: 600;
+            max-width: 80%;
+        }
+
+        header h1 {
+            margin-top: 0;
+            color: #fff;
+            font-size: 27px;
+            font-weight: 600;
+        }
+
+        p#desc {
+            padding: 15px;
+            padding-right: 20px;
+        }
+
+        .applications-donuts {
+            width: 150px;
+            height: 150px;
+        }
+
+        #application-donut-2,
+        #application-donut-3 {
+            width: 185px;
+            height: 185px;
+            margin-top: -20px;
+            margin-left: -15px;
+        }
+
+        h3.section-title {
+            font-weight: 600;
+            padding-left: 20px;
+            position: relative;
+            margin-bottom: 15px;
+            font-size: 21px;
+        }
+
+        h3.section-title.smaller {
+            font-size: 18px;
+        }
+
+        h3.section-title::before {
+            content: '';
+            position: absolute;
+            top: 13px;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: #EF4C51;
+            z-index: -1;
+        }
+
+        h3.section-title > span {
+            padding-left: 8px;
+            padding-right: 8px;
+            background: #fff;
+            display: inline-block;
+        }
+
+        h3.section-title > span > small {
+            font-size: 16px;
+            color: #333;
+        }
+
+        h3.section-title .text-muted {
+            color: #EF4C51;
+        }
+
+        .number-count {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .number-count + p {
+            font-size: 12px;
+        }
+
+        .line-divider .col-xs-6:first-child {
+            border-right: 1px solid #e7e7e7;
+        }
+
+        .line-divider .col-xs-6 {
+            border-right: 1px solid #e7e7e7;
+            height: 100px;
+        }
+
+        .line-divider .col-xs-6:last-child {
+            border-right: 0;
+        }
+
+        .line-divider.margin-bottom {
+            margin-bottom: 5px;
+        }
+
+        #applications-count {
+            font-size: 24px;
+            margin-top: 60px;
+        }
+
+        .visit-title {
+            display: block;
+            font-size: 18px;
+            margin-top: 30px;
+        }
+
+        .visit-title + p {
+            font-size: 12px;
+        }
+
+        footer {
+            bottom: 0;
+            width: 100%;
+            left: 0;
+            position: relative;
+        }
+
+        footer #trusted-by {
+            margin-bottom: 25px;
+        }
+
+        footer #trusted-by img {
+            margin-top: 10px;
+        }
+
+        footer #trusted-by .fix-top {
+            margin-top: 5px;
+        }
+
+        footer #footer {
+            background: #110329;
+            padding: 7px 15px 0;
+        }
+
+        footer #footer p {
+            color: #fff;
+            margin-top: 5px;
+            font-size: 13px;
+        }
+
+        footer #footer p a {
+            color: #EF4C51 !important;
+        }
+
+        footer #footer .pull-right a {
+            text-decoration: none;
+            margin-left: 5px;
+        }
+
+        footer #footer .pull-right a .fa-square {
+            color: #EF4C51 !important;
+        }
+    </style>
 </head>
 <body>
+<header>
+    <img src="https://ddzgqog6k5jvc.cloudfront.net/images/static/logos/black-logo.png" id="company-logo" />
+    <div id="header-logo" class="pull-left">
+        <img src="https://ddzgqog6k5jvc.cloudfront.net/images/static/red_m_logo_opt.png" width="60" />
+    </div>
+    <div id="title" class="pull-left">
+        <p>Sponsored job campaign</p>
+        <h1>Test test</h1>
+    </div>
+    <div class="clearfix"></div>
+</header>
+<p id="desc" class="text-muted">This report shows the performance of the &nbsp;<strong>Sponsored Job</strong> campaign run from <strong> Dicembre </strong> to <strong>Gennaio</strong></p>
 
-<div class="container">
+<h3 class="section-title">
+        <span>
+            Applications
+                <small>
+                    (<span class="red-text">20</span> received, <span class="red-text">300</span> sent to your ATS)
+                </small>
+        </span>
+</h3>
+
+<div class="content">
     <div class="row">
-        <div class="col col-sm-10">
-            <h1 style="float:right  ">{{ page_title }}</h1>
+        <div class="col-xs-3 text-center">
+            <div class="applications-donuts" id="application-donut-1" data-type="pending"></div>
         </div>
-        <div class="col col-sm-2">
-            2 cols.
+        <div class="col-xs-3 text-center">
+            <div class="applications-donuts" id="application-donut-2" data-type="accepted"></div>
+        </div>
+        <div class="col-xs-3 text-center">
+            <div class="applications-donuts" id="application-donut-3" data-type="interviewed"></div>
+        </div>
+        <div class="col-xs-3 text-center">
+            <div class="applications-donuts" id="application-donut-4" data-type="rejected"></div>
         </div>
     </div>
 </div>
 
+<h3 class="section-title"><span>Targeted candidates visits</span></h3>
 
-<ul id="navigation">
-    {% for post in posts %}
-        <li>{{ post['title'] }}</li>
-    {% endfor %}
-</ul>
+<div class="content line-divider margin-bottom">
+    <div class="row">
+        <div class="col-xs-6 text-center">
+            <strong class="red-text visit-title">Job Page</strong>
+        </div>
+        <div class="col-xs-6 text-center">
+            <h3 class="number-count">300</h3>
+            <p class="text-muted">Number of visits</p>
+        </div>
+    </div>
+</div>
+
+<div class="content line-divider margin-bottom">
+    <div class="row">
+        <div class="col-xs-6 text-center">
+            <strong class="red-text visit-title">Company Career Page</strong>
+        </div>
+        <div class="col-xs-6 text-center">
+            <h3 class="number-count">20</h3>
+            <p class="text-muted">Number of visits</p>
+        </div>
+    </div>
+</div>
+<div class="content line-divider">
+    <div class="row">
+        <div class="col-xs-6 text-center">
+            <strong class="red-text visit-title">Average visit time</strong>
+            <p class="text-muted">on Job Page</p>
+        </div>
+        <div class="col-xs-6 text-center">
+            <h3 class="number-count">20</h3>
+            <p class="text-muted">Seconds</p>
+        </div>
+    </div>
+</div>
+
+<footer>
+    <div id="trusted-by">
+        <h3 class="section-title smaller"><span>Trusted by</span></h3>
+        <div class="row content">
+            <div class="col-xs-2">
+                <img src="https://cdn.filestackcontent.com/OUDvCUaQ1eggvIDjKvEQ" class="img-responsive">
+            </div>
+            <div class="col-xs-2">
+                <img src="https://www.filepicker.io/api/file/OVBYvbKgSqCYTG015wch" class="img-responsive fix-top">
+            </div>
+            <div class="col-xs-2">
+                <img src="https://www.filepicker.io/api/file/mfZaUmsTqu6Y24XwnzEw" class="img-responsive fix-top">
+            </div>
+            <div class="col-xs-2">
+                <img src="https://www.filepicker.io/api/file/4EJtbW7FQxubJTAHXXxw" class="img-responsive">
+            </div>
+            <div class="col-xs-2">
+                <img src="https://www.filepicker.io/api/file/ibkCi1CrTASK8djI2Tm1" class="img-responsive">
+            </div>
+            <div class="col-xs-2">
+                <img src="https://www.filepicker.io/api/file/G20qW8MDSuOQMqqQrT9y" class="img-responsive">
+            </div>
+        </div>
+    </div>
+    <div id="footer">
+        <div class="pull-left">
+            <p>For more information visit <a href="https://meritocracy.is">https://meritocracy.is</a></p>
+        </div>
+        <div class="pull-right">
+            <a href="http://www.facebook.com/meritocracy.is">
+                    <span class="fa-stack text-center">
+                        <i class="fa fa-square fa-stack-2x"></i>
+                        <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                    </span>
+            </a>
+            <a href="http://twitter.com/meritocracy_is">
+                    <span class="fa-stack text-center">
+                        <i class="fa fa-square fa-stack-2x"></i>
+                        <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                    </span>
+            </a>
+            <a href="http://instagram.com/meritocracy.is">
+                    <span class="fa-stack text-center">
+                        <i class="fa fa-square fa-stack-2x"></i>
+                        <i class="fa fa-instagram fa-stack-1x fa-inverse"></i>
+                    </span>
+            </a>
+            <a href="http://www.linkedin.com/company/meritocracy_is">
+                    <span class="fa-stack text-center">
+                        <i class="fa fa-square fa-stack-2x"></i>
+                        <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+                    </span>
+            </a>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+</footer>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+
 </body>
 </html>
